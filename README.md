@@ -27,7 +27,7 @@
 ## Installation
 
 The server is published as [`iapp-ai` on PyPI](https://pypi.org/project/iapp-ai/) and
-[`iapp-ai` on npm](https://www.npmjs.com/package/iapp-ai) — use whichever package
+[`iapp_ai` on npm](https://www.npmjs.com/package/iapp_ai) — use whichever package
 manager you prefer:
 
 ### Python (3.10+)
@@ -51,9 +51,9 @@ The npm package is a thin launcher for the Python server, so
 
 | Package manager | Run without installing | Install permanently |
 |---|---|---|
-| npm | `npx -y iapp-ai` | `npm install -g iapp-ai` |
-| yarn | `yarn dlx iapp-ai` | `yarn global add iapp-ai` |
-| pnpm | `pnpm dlx iapp-ai` | `pnpm add -g iapp-ai` |
+| npm | `npx -y iapp_ai` | `npm install -g iapp_ai` |
+| yarn | `yarn dlx iapp_ai` | `yarn global add iapp_ai` |
+| pnpm | `pnpm dlx iapp_ai` | `pnpm add -g iapp_ai` |
 
 Every "install permanently" option gives you the same `iapp-ai` command:
 
@@ -89,7 +89,7 @@ you installed:
   "mcpServers": {
     "iapp-ai": {
       "command": "npx",
-      "args": ["-y", "iapp-ai"],
+      "args": ["-y", "iapp_ai"],
       "env": {
         "IAPP_API_KEY": "YOUR_API_KEY"
       }
@@ -266,6 +266,62 @@ Once connected, ask your AI assistant things like:
 ### 9. Thai Data API
 
 - *"วันหยุดราชการไทยปีหน้ามีวันไหนบ้าง"* — Thai Holiday Data API (`iapp_thai_holidays`)
+
+## SDK
+
+Besides the MCP server, v2 ships a full SDK for both languages, covering the same
+37 live-verified operations with namespaced methods and clear errors.
+
+**Python** (`pip install iapp-ai`) — sync and async:
+
+```python
+from iapp_ai import IAppClient
+
+client = IAppClient(api_key="YOUR_API_KEY")        # or IAPP_API_KEY env var
+
+result = client.nlp.sentiment("ร้านนี้อร่อยมาก")
+card = client.ekyc.thai_id_card("idcard.jpg")
+text = client.ocr.document("contract.pdf")
+client.speech.tts("สวัสดีครับ", output_path="hello.wav")
+reply = client.llm.chat("ส้มตำกี่แคลอรี่", model="chinda-qwen3-4b")
+```
+
+```python
+from iapp_ai import AsyncIAppClient
+
+client = AsyncIAppClient()
+result = await client.nlp.sentiment("ร้านนี้อร่อยมาก")
+```
+
+**Node.js** (`npm install iapp_ai`) — fetch-based with TypeScript types:
+
+```javascript
+const { IAppClient } = require("iapp_ai");
+
+const client = new IAppClient("YOUR_API_KEY");     // or IAPP_API_KEY env var
+
+const result = await client.nlp.sentiment("ร้านนี้อร่อยมาก");
+const card = await client.ekyc.thaiIdCard("idcard.jpg");
+await client.speech.tts("สวัสดีครับ", "hello.wav");
+const reply = await client.llm.chat("ส้มตำกี่แคลอรี่");
+```
+
+Namespaces in both languages: `ekyc`, `ocr`, `llm`, `nlp`, `speech`, `image`,
+`video`, `smartcity`, `data`.
+
+### Legacy SDKs (v1.x compatible)
+
+The v1.x SDK classes are still included — existing code keeps working unchanged:
+
+```python
+from iapp_ai import api          # Python v1.x
+client = api("YOUR_API_KEY")
+```
+
+```javascript
+const iapp_ai = require("iapp_ai");   // Node v1.x (default export)
+const client = new iapp_ai("YOUR_API_KEY");
+```
 
 ## Notes
 

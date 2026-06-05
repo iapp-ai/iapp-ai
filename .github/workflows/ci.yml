@@ -34,5 +34,9 @@ jobs:
           pip install build twine
           python -m build
           twine check dist/*
-      - name: Check npm wrapper syntax
-        run: node --check npm/bin/iapp-ai.js
+      - name: Test npm package (SDK + launcher)
+        run: |
+          node --check npm/bin/iapp-ai.js
+          cd npm
+          npm install
+          npm test

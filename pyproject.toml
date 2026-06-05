@@ -27,6 +27,7 @@ dependencies = [
     "mcp>=1.2.0",
     "httpx>=0.27.0",
     "pydantic>=2.0.0",
+    "requests>=2.25.0",  # legacy v1.x SDK (iapp_ai.api)
 ]
 
 [project.optional-dependencies]
@@ -46,7 +47,7 @@ Repository = "https://github.com/iapp-ai/iapp-ai"
 iapp-ai = "iapp_mcp.server:main"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/iapp_mcp"]
+packages = ["src/iapp_mcp", "src/iapp_ai"]
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"

@@ -1,13 +1,19 @@
 {
-  "name": "iapp-ai",
+  "name": "iapp_ai",
   "version": "2.0.0",
-  "description": "MCP server for the iApp AI Marketplace (https://iapp.co.th) — Thai OCR, eKYC, NLP, LLM, Speech, Image/Video Generation",
+  "description": "iApp AI — legacy Node.js SDK (v1.x compatible) + MCP server launcher for the iApp AI Marketplace (https://iapp.co.th): Thai OCR, eKYC, NLP, LLM, Speech, Image/Video Generation",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
   "bin": {
     "iapp-ai": "bin/iapp-ai.js"
   },
   "files": [
-    "bin"
+    "bin",
+    "src"
   ],
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
   "engines": {
     "node": ">=18"
   },
@@ -21,7 +27,8 @@
     "ekyc",
     "nlp",
     "speech",
-    "llm"
+    "llm",
+    "sdk"
   ],
   "author": "iApp Technology Co., Ltd. <dev@iapp.co.th>",
   "license": "MIT",
@@ -29,5 +36,8 @@
     "type": "git",
     "url": "git+https://github.com/iapp-ai/iapp-ai.git"
   },
-  "homepage": "https://iapp.co.th"
+  "homepage": "https://iapp.co.th",
+  "dependencies": {
+    "request": "^2.88.2"
+  }
 }
