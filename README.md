@@ -273,7 +273,7 @@ Once connected, ask your AI assistant things like:
 - File-based tools accept **local file paths**; generated audio/images are saved to the path you specify.
 - Large base64 blobs in API responses (e.g. cropped face images) are truncated in tool output to keep context small.
 - Seedance video generation requires a paid iApp account (any IC package purchase unlocks it).
- 
+
 ## Support
 
 - Documentation: [iapp.co.th/docs/intro](https://iapp.co.th/docs/intro)
@@ -283,4 +283,4 @@ Once connected, ask your AI assistant things like:
 
 ## License
 
-[© iApp Technology Co., Ltd.](https://iapp.co.th/about-us)
+MIT — © iApp Technology Co., Ltd.
