@@ -29,6 +29,13 @@ dependencies = [
     "pydantic>=2.0.0",
 ]
 
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.24",
+    "respx>=0.21",
+]
+
 [project.urls]
 Homepage = "https://iapp.co.th"
 Documentation = "https://iapp.co.th/docs/intro"
@@ -40,3 +47,7 @@ iapp-ai = "iapp_mcp.server:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/iapp_mcp"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
