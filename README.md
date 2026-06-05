@@ -39,9 +39,15 @@ manager you prefer:
 
 ### Node.js (18+)
 
-> The npm package is a thin launcher for the Python server, so
-> [uv](https://docs.astral.sh/uv/getting-started/installation/) must be installed
-> (one time): `curl -LsSf https://astral.sh/uv/install.sh | sh` or `brew install uv`
+The npm package is a thin launcher for the Python server, so
+[uv](https://docs.astral.sh/uv/getting-started/installation/) must be installed (one time):
+
+| OS | Command |
+|---|---|
+| macOS / Linux | `curl -LsSf https://astral.sh/uv/install.sh \| sh` |
+| macOS (Homebrew) | `brew install uv` |
+| Windows (PowerShell) | `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 \| iex"` |
+| Windows (winget) | `winget install astral-sh.uv` |
 
 | Package manager | Run without installing | Install permanently |
 |---|---|---|
@@ -116,7 +122,7 @@ environment variable set.
 All 37 tools, what they do, and their key inputs. File inputs are **local file
 paths**; generated files are saved to the `output_path` you specify.
 
-### 🪪 eKYC
+### eKYC
 
 | Tool | What it does | Key inputs |
 |---|---|---|
@@ -131,7 +137,7 @@ paths**; generated files are saved to the `output_path` you specify.
 | `iapp_face_id_card_kyc` | Match a selfie against the face on an ID card | `id_card_path`, `selfie_path` |
 | `iapp_face_recognition` | Enroll & search faces in a company database (1:N) | `action` (add/remove/check/recognize_single/recognize_multi), `company`, `file_path`, `name`, `password` |
 
-### 🔍 Thai Document OCR
+### Thai Document OCR
 
 | Tool | What it does | Key inputs |
 |---|---|---|
@@ -143,14 +149,14 @@ paths**; generated files are saved to the `output_path` you specify.
 | `iapp_resume_ocr` | Extract structured data from a resume/CV + AI evaluation | `file_path` |
 | `iapp_job_description_ocr` | Extract structured data from a job description | `file_path` |
 
-### 🤖 Large Language Model
+### Large Language Model
 
 | Tool | What it does | Key inputs |
 |---|---|---|
 | `iapp_llm_chat` | Chat with LLMs hosted on iApp (OpenAI-compatible) | `prompt` (or full `messages`), `model`: `chinda-qwen3-4b` (Thai, free) / `deepseek-chat` / `deepseek-reasoner` / `deepseek-v4-flash` / `deepseek-v4-pro`, `system_prompt`, `max_tokens`, `temperature` |
 | `iapp_thanoy_legal_qa` | Ask Thai legal questions (Thanoy Legal AI) | `query` |
 
-### 🌐 Thai NLP
+### Thai NLP
 
 | Tool | What it does | Key inputs |
 |---|---|---|
@@ -161,7 +167,7 @@ paths**; generated files are saved to the `output_path` you specify.
 | `iapp_thai_qa` | Answer a question from a given Thai document (extractive QA) | `question`, `document` |
 | `iapp_question_generation` | Generate Q&A pairs from Thai text | `text` |
 
-### 🎙️ Speech Technology
+### Speech Technology
 
 | Tool | What it does | Key inputs |
 |---|---|---|
@@ -170,7 +176,7 @@ paths**; generated files are saved to the `output_path` you specify.
 | `iapp_voice_clone_tts` | Speak any text in a voice cloned from a sample | `text`, `ref_audio_path`, `ref_text`, `output_path` |
 | `iapp_ai_audio_detection` | Check if audio was AI-generated | `audio_path` |
 
-### 🖼️ Image & 🎬 Video Generation
+### Image & Video Generation
 
 | Tool | What it does | Key inputs |
 |---|---|---|
@@ -179,7 +185,7 @@ paths**; generated files are saved to the `output_path` you specify.
 | `iapp_video_generation_submit` | Submit an async Seedance 2.0 video job | `prompt`, `model` (seedance/seedance-fast), `duration` (4–15 s), `ratio`, `resolution`, `generate_audio` |
 | `iapp_video_generation_status` | Poll a video job and get the download URL | `task_id` |
 
-### ♻️ Smart City AI & 📊 Thai Data
+### Smart City AI & Thai Data
 
 | Tool | What it does | Key inputs |
 |---|---|---|
@@ -267,12 +273,14 @@ Once connected, ask your AI assistant things like:
 - File-based tools accept **local file paths**; generated audio/images are saved to the path you specify.
 - Large base64 blobs in API responses (e.g. cropped face images) are truncated in tool output to keep context small.
 - Seedance video generation requires a paid iApp account (any IC package purchase unlocks it).
-
+ 
 ## Support
 
 - Documentation: [iapp.co.th/docs/intro](https://iapp.co.th/docs/intro)
+- Website: [iapp.co.th](https://iapp.co.th)
+- Support: [iApp support](https://internal.iapp.co.th/support)
 - Email: support@iapp.co.th
 
 ## License
 
-© iApp Technology Co., Ltd.
+[© iApp Technology Co., Ltd.](https://iapp.co.th/about-us)
